@@ -1,0 +1,11 @@
+*.class
+logger
+/PullTheRope
+/dirBench
+/dirCoach
+/dirContestant
+/dirGeneralRepos
+/dirPlayground
+/dirReferee
+/dirRefereeSite
+*.zip

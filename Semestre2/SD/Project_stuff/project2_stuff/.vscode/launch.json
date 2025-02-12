@@ -1,0 +1,79 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "clientCoach",
+            "request": "launch",
+            "mainClass": "ClientSide.main.clientCoach",
+            "projectName": "SDAssignment2_f65e28d7",
+            "args": "localhost 22262 localhost 22264 localhost 22261"
+        },
+        {
+            "type": "java",
+            "name": "clientContestant",
+            "request": "launch",
+            "mainClass": "ClientSide.main.clientContestant",
+            "projectName": "SDAssignment2_f65e28d7",
+            "args": "localhost 22262 localhost 22264"
+        },
+        {
+            "type": "java",
+            "name": "clientReferee",
+            "request": "launch",
+            "mainClass": "ClientSide.main.clientReferee",
+            "projectName": "SDAssignment2_f65e28d7",
+            "args": "localhost 22262 localhost 22264 localhost 22261 localhost 22260"
+        },
+        {
+            "type": "java",
+            "name": "ServerBench",
+            "request": "launch",
+            "mainClass": "ServerSide.main.ServerBench",
+            "projectName": "SDAssignment2_f65e28d7",
+            "args": "22262 localhost 22260"
+        },
+        {
+            "type": "java",
+            "name": "ServerGeneralRepo",
+            "request": "launch",
+            "mainClass": "ServerSide.main.ServerGeneralRepo",
+            "projectName": "SDAssignment2_f65e28d7",
+            "args": "22260"
+            
+        },
+        {
+            "type": "java",
+            "name": "ServerPlayground",
+            "request": "launch",
+            "mainClass": "ServerSide.main.ServerPlayground",
+            "projectName": "SDAssignment2_f65e28d7",
+            "args": "22264 localhost 22260"
+        },
+        {
+            "type": "java",
+            "name": "ServerRefereeSite",
+            "request": "launch",
+            "mainClass": "ServerSide.main.ServerRefereeSite",
+            "projectName": "SDAssignment2_f65e28d7",
+            "args": "22261 localhost 22260"
+
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Servers",
+            "configurations": ["ServerGeneralRepo", "ServerBench", "ServerPlayground", "ServerRefereeSite"],
+            "stopAll": true
+        },
+        {
+            "name": "Clients",
+            "configurations": ["clientCoach", "clientContestant", "clientReferee"],
+            "stopAll": true
+        }
+        
+    ]
+}
