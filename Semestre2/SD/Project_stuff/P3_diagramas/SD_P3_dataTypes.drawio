@@ -1,0 +1,40 @@
+<mxfile host="app.diagrams.net" modified="2024-06-05T13:19:20.057Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0" etag="q9x9yp5gfy38-f35KLyt" version="24.4.13" type="device">
+  <diagram name="Page-1" id="8G-TDpBrZnWFRdwxH2hP">
+    <mxGraphModel dx="1050" dy="558" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ctMj3vyAkk-ZHn5RQAny-1" value="" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="80" y="65" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="ctMj3vyAkk-ZHn5RQAny-2" value="" style="ellipse;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;fillColor=#A6A6A6;fontColor=#ffffff;strokeColor=#314354;" parent="1" vertex="1">
+          <mxGeometry x="90" y="75" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ctMj3vyAkk-ZHn5RQAny-4" value="" style="ellipse;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;fillColor=#A6A6A6;fontColor=#ffffff;strokeColor=#314354;" parent="1" vertex="1">
+          <mxGeometry x="90" y="286" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ctMj3vyAkk-ZHn5RQAny-8" value="" style="ellipse;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" parent="1" vertex="1">
+          <mxGeometry x="90" y="391" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="J0_Lx2hSn_o62kDlmLEp-1" value="" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="171" width="170" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="J0_Lx2hSn_o62kDlmLEp-2" value="" style="ellipse;whiteSpace=wrap;html=1;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;locked=0;connectable=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="181" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="J0_Lx2hSn_o62kDlmLEp-3" value="&lt;div&gt;Non-instantiated data type&lt;/div&gt;&lt;div&gt;active entity&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="296.5" y="84" width="152" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="J0_Lx2hSn_o62kDlmLEp-4" value="&lt;div&gt;Non-instantiated data type&lt;/div&gt;&lt;div&gt;passive entity&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="296.5" y="195.5" width="152" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="J0_Lx2hSn_o62kDlmLEp-5" value="&lt;div&gt;Instantiated data type&lt;/div&gt;&lt;div&gt;active entity&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="308.5" y="295" width="128" height="41" as="geometry" />
+        </mxCell>
+        <mxCell id="J0_Lx2hSn_o62kDlmLEp-6" value="&lt;div&gt;Instantiated data type&lt;/div&gt;&lt;div&gt;passive entity&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="308.5" y="405.5" width="128" height="41" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
