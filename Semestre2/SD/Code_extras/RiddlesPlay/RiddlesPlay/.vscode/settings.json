@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\Strikeneerman\\Desktop\\SemestreAtual\\SD\\Code\\genclass_doc\\genclass.jar"
+    ]
+}

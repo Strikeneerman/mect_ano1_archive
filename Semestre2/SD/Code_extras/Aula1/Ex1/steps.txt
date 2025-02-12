@@ -1,0 +1,9 @@
+palindrome:
+
+- read text from keyboard
+- instantiate stack and fifo
+- copy each text to stack and fifo
+- palindrome:
+    -check stack
+    -check fifo
+    -compare chars
