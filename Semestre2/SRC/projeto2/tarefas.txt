@@ -1,0 +1,21 @@
+-Calculo de estatisticas relevantes (endereços ip de origem, endereços ip de destino, portos mais comuns, protocolos mais comuns, estatisticas do número de pacotes/bytes de upload e de download)
+
+-Deteção de exfiltração de dados (se quantidade de upload for superior ao normal/taxas anormais de upload usando os protocolos HTTP/HTTPS (portos destino 80 e 443)) Verificar se os IP de destino pertencem a serviços "cloud"
+
+-Comunicações não habituais (ips de origem de paieses estranhos, previamente identificados e colocados numa "lista negra")
+
+-Deteção de botnets (ver as comunicações dentro da propira rede, os bots comunicam entre eles e depois a info é exfiltrada, inidcativo tipico: muitas comunicações entre maquinas da empresa/ um numero anormal de pacotes)
+
+-Command and Control (hackers externos a comunicar com maquinas da empresa, focar no dns, troca nao habitual de mensagens DNS (porto 53) em numero de pacotes e tamanho dos pacotes)
+
+-Distinçao de clientes externos que se comportam de maneira estranha nos "nossos" servidores (intervalos entre fluxos, alguem de minuto a minuto esta a tentar entrar no servidor) (fazer analise por fluxo)
+
+fluxo: pacotes que partilham ip origem, ip destino, porto de origem, porto de destino, protocolo
+
+
+
+Ficheiros:
+serverX é so usado para o ultimo ponto - distinção entre clientes
+
+
+Escrever as regras SIEM para detetar estas anomalias (escrever o que fariamos em cada uma das situações)
