@@ -1,0 +1,32 @@
+192.168.56.1/24
+
+
+WAN (wan) -> em0 -> v4/DHCP: 192.168.100.106/24
+LAN (lan) -> em1 -> v4: 192.168.56.2/24
+WLAN (opt1) -> em2 -> v4: 192.168.57.2/24
+
+ipv4 address terminal: 192.168.57.100
+gateway: 192.168.57.2
+ipv4 dns servers: 193.136.172.20
+		  193.136.172.21
+
+
+CM:
+download speed: 87.3 mb/s
+upload speed: 92.07 mb/s
+ping: 18.50 ms	
+
+CM_band:
+
+download speed: 0.811 mb/s
+upload speed: 0.047 mb/s 
+ping: 20.50 ms	
+
+CM_time:
+
+time:null
+
+CM_traffic:
+
+parou: ya
+conclusao: trafico limitado

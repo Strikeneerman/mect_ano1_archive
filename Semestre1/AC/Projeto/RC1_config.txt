@@ -1,0 +1,79 @@
+configure
+
+|
+| Initial config
+|
+set interfaces ethernet eth1 address 10.0.0.42/30
+set interfaces dummy dum0 address 10.0.0.136/32
+set protocols ospf area 0 network 10.0.0.40/30
+set protocols ospf area 0 network 10.0.0.136/32
+set system host-name RC1
+
+commit
+save
+
+|
+| VXLAN config
+|
+| BGP EVPN Configuration
+| LEAF
+|
+
+set protocols bgp system-as 100
+set protocols bgp address-family l2vpn-evpn advertise-all-vni
+set protocols bgp parameters router-id 10.0.0.136  
+set protocols bgp neighbor 10.0.0.133 peer-group evpn  
+set protocols bgp peer-group evpn update-source dum0
+set protocols bgp peer-group evpn remote-as 100
+set protocols bgp peer-group evpn address-family l2vpn-evpn nexthop-self
+
+|
+| VXLAN config
+|
+
+set interfaces vxlan vxlan10 source-address 10.0.0.136 
+set interfaces vxlan vxlan10 vni 10
+set interfaces vxlan vxlan10 mtu 1500 
+set interfaces vxlan vxlan10 remote 10.0.0.22
+set interfaces vxlan vxlan10 remote 10.0.0.13
+
+set interfaces vxlan vxlan20 source-address  10.0.0.136  
+set interfaces vxlan vxlan20 vni 20
+set interfaces vxlan vxlan20 mtu 1500
+set interfaces vxlan vxlan20 remote 10.0.0.22
+set interfaces vxlan vxlan20 remote 10.0.0.13
+
+set interfaces vxlan vxlan30 source-address  10.0.0.136 
+set interfaces vxlan vxlan30 vni 30
+set interfaces vxlan vxlan30 mtu 1500
+set interfaces vxlan vxlan30 remote 10.0.0.22
+set interfaces vxlan vxlan30 remote 10.0.0.13
+
+|
+| VXLAN config
+|
+| Bridges
+|
+
+set interfaces ethernet eth0 vif 10 
+set interfaces ethernet eth0 vif 20 
+set interfaces ethernet eth0 vif 30 
+commit
+
+set interfaces bridge br10 address 10.10.0.3/24  
+set interfaces bridge br10 description 'VLAN 10 Bridge'
+set interfaces bridge br10 member interface 'eth0.10'  
+set interfaces bridge br10 member interface 'vxlan10'
+
+set interfaces bridge br20 address 10.20.0.3/24  
+set interfaces bridge br20 description 'VLAN 20 Bridge'
+set interfaces bridge br20 member interface 'eth0.20'  
+set interfaces bridge br20 member interface 'vxlan20' 
+
+set interfaces bridge br30 address 10.30.0.3/24  
+set interfaces bridge br30 description 'VLAN 30 Bridge'
+set interfaces bridge br30 member interface 'eth0.30'  
+set interfaces bridge br30 member interface 'vxlan30'
+
+commit
+save

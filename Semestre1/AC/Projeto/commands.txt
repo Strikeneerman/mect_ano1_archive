@@ -1,0 +1,11 @@
+Nas vlans
+retirar os remotes
+verificar os prefixos 
+
+
+show ipbgp vpnv4 all
+show mpls forwarding-table
+show ip bgp
+
+label 17
+label 39

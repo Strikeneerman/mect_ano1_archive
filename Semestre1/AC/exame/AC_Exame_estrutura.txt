@@ -1,0 +1,15 @@
+1º grupo - para ver quem foi as aulas
+1º pergunta- Coisa que apareceu nas aulas 
+exemplo- o que é a tmn ?
+	 porque usar o vxlan ?
+
+
+2º grupo - voces tem 2 dedos de testa aka pensar no que foi dito (costuma ser o pior grupo)
+
+exemplo- porque é que na tmn é preciso o fk
+	 acham que precisamos ...
+	 pegar em algo dos jornais ?! - o gov protugues investio ... na cobertura de zonas mal servidas por fibra otica, mas certas ilhas nao tem cobertura. Porque acha que as ilhas nao tem cobertura nas zonas pouco previligiadas ? Resposta: money
+
+3º grupo - será que marraram alguma coisa da cadeira aka estudado
+
+exemplo- Descreva a estrutura arquitetonica da tmn

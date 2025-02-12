@@ -1,0 +1,26 @@
+PARTE A
+
+eNB 411482:42 -LTE
+mcc - 268
+mnc - 1
+ordered by dBm
+
+17)
+mcc - 268
+mnc - 1
+band - 1,3,20
+
+
+cell 42- bandwidth - 20 MHZ
+	direction - W(274º)
+	maximum rsrp- -96 dBm
+	maximum rsrq - -11 dB
+	uplink freq - 1720 MHz
+	downlink freq - 1815 MHz
+
+
+PARTE B
+
+channel - 64
+freq- 5320 MHz
+RSSI- -55 dBm
