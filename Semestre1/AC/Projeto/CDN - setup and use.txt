@@ -1,0 +1,128 @@
+=== Connectivity config:
+# sudo ip addr add 10.0.0.54/30 dev enp0s3
+# sudo ip route add default via 10.0.0.53
+
+(to remove an ip or gateway use del instead of add)
+
+
+=== Make  /etc/bind/customGeoIP.acl file:
+
+acl "Porto" {
+    10.0.1.0/24;
+};
+
+acl "Lisbon" {
+    10.0.2.0/24;
+};
+
+acl "Barcelona" {
+    10.0.3.0/24;
+};
+
+
+=== In /etc/bind/named.conf:
+ADD:
+include “/etc/bind/customGeoIP.acl”
+COMMENT:
+//include “/etc/bind/named.conf.default-zones”;
+
+
+=== In /etc/bind/named.conf.local:
+REMOVE EVERYTHING
+ADD:
+
+view "Porto" {
+ match-clients { Porto; };
+ recursion no;
+ zone "SMEcdn.com" {
+  type master;
+  file "/etc/bind/SMEcdn.com-Porto.db";
+ };
+};
+
+view "Lisbon" {
+ match-clients { Lisbon; };
+ recursion no;
+ zone "SMEcdn.com" {
+  type master;
+  file "/etc/bind/SMEcdn.com-Lisbon.db";
+ };
+};
+
+view "Barcelona" {
+ match-clients { Barcelona; };
+ recursion no;
+ zone "SMEcdn.com" {
+  type master;
+  file "/etc/bind/SMEcdn.com-Barcelona.db";
+ };
+};
+
+=== Create /etc/bind/SMEcdn.com-Porto.db:
+$TTL 604800
+$ORIGIN SMEcdn.com.
+@ 	IN 	SOA 	ns1.SMEcdn.com. adm.SMEcdn.com. (
+			2 ; Serial
+			604800 ; Refresh
+			86400 ; Retry
+			2419200 ; Expire
+			604800 ); Negative Cache TTL
+@ 	IN 	NS 	ns1.SMEcdn.com.
+@ 	IN 	A 	10.0.1.2
+ns1 	IN 	A 	10.0.0.54
+
+=== Create /etc/bind/SMEcdn.com-Lisbon.db:
+$TTL 604800
+$ORIGIN SMEcdn.com.
+@ 	IN 	SOA 	ns1.SMEcdn.com. adm.SMEcdn.com. (
+			2 ; Serial
+			604800 ; Refresh
+			86400 ; Retry
+			2419200 ; Expire
+			604800 ); Negative Cache TTL
+@ 	IN 	NS 	ns1.SMEcdn.com.
+@ 	IN 	A 	10.0.2.2
+ns1 	IN 	A 	10.0.0.54
+
+=== Create /etc/bind/SMEcdn.com-Barcelona.db:
+$TTL 604800
+$ORIGIN SMEcdn.com.
+@ 	IN 	SOA 	ns1.SMEcdn.com. adm.SMEcdn.com. (
+			2 ; Serial
+			604800 ; Refresh
+			86400 ; Retry
+			2419200 ; Expire
+			604800 ); Negative Cache TTL
+@ 	IN 	NS 	ns1.SMEcdn.com.
+@ 	IN 	A 	10.0.3.2
+ns1 	IN 	A 	10.0.0.54
+
+
+=== Verify if your zone files are correctly defined:
+# named-checkzone SMEcdn.com /etc/bind/SMEcdn.com-Porto.db
+# named-checkzone SMEcdn.com /etc/bind/SMEcdn.com-Lisbon.db
+# named-checkzone SMEcdn.com /etc/bind/SMEcdn.com-Barcelona.db
+
+
+=== In named.conf.options:
+CHANGE:
+dnssec-validation no;
+
+
+=== Restart bind9 server:
+# service bind9 restart or systemctl restart bind9
+# service bind9 status 
+# systemctl status bind9
+
+Note: If the service restart fails, check the syslog file for reason: 
+tail /var/log/syslog
+
+
+=== To test DNS connectivity from the cisco routers do:
+clear host *
+ping SMEcdn.com
+
+
+
+
+

@@ -1,0 +1,3 @@
+(alguns pontos extra)
+
+o router de core deve anunciar a rede 0.0.0.0 (default) aos routers dos pops para dizer que fornece o acesso à internet, na familia ipv4 unicast (ver guiao intro BGP)

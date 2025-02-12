@@ -1,0 +1,62 @@
+Edge Routers:
+
+-Porto and Lisbon
+
+conf t 
+access-list 101 permit udp any any eq 3001
+class-map match-all VPN
+match access-group 101
+exit
+policy-map SETDSCP
+class VPN
+set ip dscp 22
+end
+conf t
+int f0/1
+service-policy input SETDSCP
+end
+
+-Chicago
+
+conf t 
+access-list 101 permit udp any any eq 3001
+class-map match-all VPN
+match access-group 101
+exit
+policy-map SETDSCP
+class VPN
+set ip dscp 22
+end
+conf t
+int f0/0
+service-policy input SETDSCP
+end
+
+
+Core Router:
+
+-Core1
+
+conf t
+class-map match-all VPN
+match ip dscp 22
+exit
+policy-map POLICE-VPN
+class VPN
+police 10000000 100000 100000 conform-action transmit exceed-action drop
+end
+
+conf t
+int f0/0
+service-policy output POLICE-VPN
+exit
+int f0/1
+service-policy output POLICE-VPN
+exit
+int f1/0
+service-policy output POLICE-VPN
+exit
+int f1/1
+service-policy output POLICE-VPN
+end
+

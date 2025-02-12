@@ -1,0 +1,104 @@
+
+
+conf t
+
+!
+!    BASIC CONNECTIVITY
+!
+
+int f0/1
+ip add 10.0.0.17 255.255.255.252
+ip ospf 1 area 0
+no shutdown
+exit
+
+int l0
+ip add 10.0.0.130 255.255.255.255
+ip ospf 1 area 0
+no shutdown
+exit
+
+!
+!     MPLS VPN 
+!
+
+! Configs needed for all routers
+mpls ip
+mpls traffic-eng tunnels
+ip cef
+
+int range f0/0-1
+mpls ip
+mpls traffic-eng tunnels
+ip rsvp bandwidth 20000 10000
+exit
+
+router ospf 1
+mpls traffic-eng area 0
+mpls traffic-eng router-id Loopback 0
+exit
+
+! Configs needed only for edge routers
+interface tunnel 1
+ ip unnumbered Loopback0
+ tunnel destination 10.0.0.134		! Destination 1
+ tunnel mode mpls traffic-eng
+ tunnel mpls traffic-eng autoroute announce
+ tunnel mpls traffic-eng bandwidth 10000
+ tunnel mpls traffic-eng path-option 1 dynamic
+exit
+interface tunnel 2
+ ip unnumbered Loopback0
+ tunnel destination 10.0.0.138		! Destination 2
+ tunnel mode mpls traffic-eng
+ tunnel mpls traffic-eng autoroute announce
+ tunnel mpls traffic-eng bandwidth 10000
+ tunnel mpls traffic-eng path-option 1 dynamic
+exit
+
+ip vrf VPN-1
+ rd 21200:1
+ route-target export 21200:1
+ route-target import 21200:1
+exit
+interface FastEthernet0/0		! Interface for the vpn
+ ip vrf forwarding VPN-1
+ ip address 10.0.2.1 255.255.255.0 	! Address of the interface for the vpn
+ no shutdown
+exit
+
+router bgp 21200
+ bgp router-id 10.0.0.130 		! Router-id
+ neighbor 10.0.0.134 remote-as 21200	! Loopback address of neighbor 1
+ neighbor 10.0.0.134 update-source Loopback0
+ neighbor 10.0.0.138 remote-as 21200	! Loopback address of neighbor 2
+ neighbor 10.0.0.138 update-source Loopback0
+ neighbor 10.0.0.139 remote-as 21200	! Loopback address of neighbor 3
+ neighbor 10.0.0.139 update-source Loopback0
+
+ address-family vpnv4
+  neighbor 10.0.0.134 activate		! Loopback address of neighbor 1
+  neighbor 10.0.0.134 send-community both
+  neighbor 10.0.0.138 activate		! Loopback address of neighbor 2
+  neighbor 10.0.0.138 send-community both
+  neighbor 10.0.0.139 activate		! Loopback address of neighbor 3
+  neighbor 10.0.0.139 send-community both
+ exit
+
+ address-family ipv4 vrf VPN-1
+  redistribute connected
+ exit
+
+
+
+
+end
+write
+
+
+clear ip ospf process
+yes
+
+
+
+

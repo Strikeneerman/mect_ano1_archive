@@ -1,0 +1,96 @@
+
+
+conf t
+
+!
+!     BASIC CONNECTIVITY
+!
+
+int f0/0
+ip add 10.0.0.38 255.255.255.252
+ip ospf 1 area 0
+no shutdown
+exit
+int f0/1
+ip add 10.0.0.34 255.255.255.252
+ip ospf 1 area 0
+no shutdown
+exit
+int f1/0
+ip add 10.0.0.45 255.255.255.252
+ip ospf 1 area 0
+no shutdown
+exit
+int f1/1
+ip add 10.0.0.49 255.255.255.252
+ip ospf 1 area 0
+no shutdown
+exit
+
+int l0
+ip add 10.0.0.137 255.255.255.255
+ip ospf 1 area 0
+no shutdown
+exit
+
+!
+!     MPLS VPN
+!
+
+! Configs needed for all routers
+mpls ip
+mpls traffic-eng tunnels
+ip cef
+
+int range f0/0-1
+mpls ip
+mpls traffic-eng tunnels
+ip rsvp bandwidth 30000 30000
+exit
+
+int range f1/0-1
+mpls ip
+mpls traffic-eng tunnels
+ip rsvp bandwidth 30000 30000
+exit
+
+router ospf 1
+mpls traffic-eng area 0
+mpls traffic-eng router-id Loopback 0
+exit
+
+!
+!    DiffServ
+!
+
+conf t
+class-map match-all VPNOUT
+match ip dscp 22
+exit
+policy-map POLICE-VPN
+class VPNOUT
+bandwidth 10000
+end
+
+conf t
+int f0/0
+service-policy output POLICE-VPN
+exit
+int f0/1
+service-policy output POLICE-VPN
+exit
+
+end
+write
+
+
+clear ip ospf process
+yes
+
+
+
+
+
+
+
+

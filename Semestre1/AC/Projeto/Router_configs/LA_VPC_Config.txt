@@ -1,0 +1,50 @@
+| connected to RP1
+
+LA_PC1.10
+
+ip 10.10.0.1/24
+save
+
+LA_PC1.20
+
+ip 10.20.0.1/24
+save
+
+LA_PC1.30
+
+ip 10.30.0.1/24
+save
+
+| connected to RL1
+
+LA_PC2.10
+
+ip 10.10.0.2/24
+save
+
+LA_PC2.20
+
+ip 10.20.0.2/24
+save
+
+LA_PC2.30
+
+ip 10.30.0.2/24
+save
+
+| connected to RC1
+
+LA_PC3.10
+
+ip 10.10.0.3/24
+save
+
+LA_PC3.20
+
+ip 10.20.0.3/24
+save
+
+LA_PC3.30
+
+ip 10.30.0.3/24
+save

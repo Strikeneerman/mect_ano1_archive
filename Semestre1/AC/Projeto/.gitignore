@@ -1,0 +1,13 @@
+~$ProjetoAC-Esquemas.pptx
+
+project-files/dynamips/**/*.txt
+project-files/dynamips/**/*.log
+project-files/dynamips/**/*.ghost
+project-files/dynamips/**/*lock
+project-files/dynamips/**/*bootflash
+project-files/dynamips/**/*iomem
+project-files/dynamips/**/*nvram
+project-files/dynamips/**/*vars
+ilt*
+project-files/virtualbox/3bc837d6-67ba-4769-9df5-08fa39b5a795/ubridge.log
+*.log

@@ -1,0 +1,19 @@
+
+
+conf t
+
+no ip routing 			
+ip default-gateway 10.0.3.1 	! Define default gateway
+ip name-server 10.0.0.54 	
+ip domain lookup 		
+interface FastEthernet0/0
+ ip address 10.0.3.2 255.255.255.0	! Define Address
+ no shutdown
+exit
+
+end
+write
+
+
+
+

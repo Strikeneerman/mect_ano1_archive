@@ -1,0 +1,14 @@
+usar os comandos da segunda parte do guião (vxlan multiponto) mas com apenas um cliente.
+no exemplo cada cliente so tem uma vlan, é preciso misturar com o primeiro exemplo em que ha varias vlans num mesmo cliente
+
+
+
+em alternativa (nao tao correto) tbm é possivel fazer apenas ligaçoes ponto a ponto como no primeiro exemplo entre os tres pontos de presença
+
+
+
+no core, é preciso implementar uma regra diffserv para assegurar 10mbps em assured forwarding (ver guiao diff serv e fazer algo do genero 
+...
+Router2(config-pmap)#class GOLD
+Router2(config-pmap)#bandwidth 10000
+...)
